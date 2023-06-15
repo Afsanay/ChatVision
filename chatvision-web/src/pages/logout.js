@@ -3,13 +3,14 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 
 export default function Logout() {
+  const supabase = useSupabaseClient();
   const router = useRouter();
-  const supabaseClient = useSupabaseClient();
+
   useEffect(() => {
-    supabaseClient.auth.signOut().then(() => {
+    supabase.auth.signOut().then(() => {
       router.push("/");
     });
-  }, [router, supabaseClient]);
+  }, [supabase, router]);
 
   return <div></div>;
 }
