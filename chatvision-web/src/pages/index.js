@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useState } from "react";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { createParser } from "eventsource-parser";
-import Link from "next/link";
+// import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import { useUser } from "@supabase/auth-helpers-react";
 
