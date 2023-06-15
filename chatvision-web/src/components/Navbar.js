@@ -1,11 +1,30 @@
-import Link from "next/link"
+import { useUser } from "@supabase/auth-helpers-react";
+import Link from "next/link";
+
 export default function Navbar() {
-    return (
-        <nav className="shadow px-4 py-2 flex flex-row justify-between items-center">
-            <div className="text-xl font-bold">ChatVision</div>
-            <div className="text-md font bold">
-                <Link href={"./logout"} className="font-bold">LogOut</Link>
-            </div>
-          </nav>
-        )
+  const user = useUser();
+
+  return (
+    <nav className="shadow px-4 py-2 flex flex-row justify-between items-center">
+      <div className="text-xl font-bold">ChatVision</div>
+      <div>
+        {user === null && (
+          <Link
+            href="/login"
+            className="text-gray-500 hover:text-blue-500 text-sm"
+          >
+            Log In
+          </Link>
+        )}
+        {user && (
+          <Link
+            href="/logout"
+            className="text-gray-500 hover:text-blue-500 text-sm"
+          >
+            Log Out
+          </Link>
+        )}
+      </div>
+    </nav>
+  );
 }
